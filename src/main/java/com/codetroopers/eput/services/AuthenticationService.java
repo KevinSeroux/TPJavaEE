@@ -32,7 +32,7 @@ public class AuthenticationService implements Serializable {
     public String login(final UserInfo userInfo) {
         if (userDAO.isLoginValid(userInfo.getName(), userInfo.getPassword())) {
             userInfo.setLoggedIn(true);
-            return "success";
+            return "entries";
         }
         facesContext.addMessage("Invalid credentials", new FacesMessage("Invalid credentials !"));
         return null;
