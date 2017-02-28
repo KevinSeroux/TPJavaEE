@@ -6,16 +6,19 @@ import com.codetroopers.eput.services.GoldenBookEntryService;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.enterprise.inject.Produces;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.Console;
+import java.io.Serializable;
 
 
 @Named
-@RequestScoped
-public class GoldenBookEntryController {
+@SessionScoped
+public class GoldenBookEntryController implements Serializable {
     @Inject
     UserInfo userInfo;
     @Inject
@@ -25,6 +28,7 @@ public class GoldenBookEntryController {
     FacesContext facesContext;
 
     private GoldenBookEntry newEntry;
+    private GoldenBookEntry entry2Change;
 
     public String insertNewEntry() {
 
@@ -43,6 +47,17 @@ public class GoldenBookEntryController {
                 return "entries" + "?faces-redirect=true";
             }
         }
+    }
+
+    public String displayModifyEntryPage(GoldenBookEntry entry) {
+        entry2Change = entry;
+        return "modifyEntry";
+    }
+
+    public String modifyEntry() {
+        //Problème null ici (soucis de portée entre displayModifyEntryPage et ici)
+        //System.out.println("Contenu ----> " + entry2Change.getContent());
+        return "";
     }
 
     @Produces

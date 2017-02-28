@@ -2,6 +2,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
                 template="/WEB-INF/templates/default.xhtml">
 
     <ui:define name="content">
@@ -13,6 +14,10 @@
                 </h:outputText>
                 </div>
                 <div class="info">On #{entry.createdAt}, by #{entry.author}.</div>
+                <h:form rendered="#{userInfo.loggedIn}">
+                    <h:commandButton value="Modify"
+                                     action="#{goldenBookEntryController.displayModifyEntryPage(entry)}"/>
+                </h:form>
             </div>
         </ui:repeat>
     </ui:define>

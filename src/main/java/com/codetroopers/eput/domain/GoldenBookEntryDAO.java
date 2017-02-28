@@ -32,8 +32,8 @@ public class GoldenBookEntryDAO {
 
     public List<GoldenBookEntry> all() {
         TypedQuery<GoldenBookEntry> query = em.createQuery(
-            "SELECT e FROM GoldenBookEntry e"
-            , GoldenBookEntry.class
+            "SELECT e FROM GoldenBookEntry e",
+            GoldenBookEntry.class
         );
         List<GoldenBookEntry> bookEntries = query.getResultList();
         return bookEntries;
