@@ -16,6 +16,7 @@
 
 package com.codetroopers.eput;
 
+import com.codetroopers.eput.domain.entities.GoldenBookEntry;
 import com.codetroopers.eput.domain.entities.User;
 
 import javax.annotation.PostConstruct;
@@ -41,5 +42,9 @@ public class MyApplicationInit {
         User florian = new User("florian", "florian@code-troopers.com");
         florian.password = "dagoba";
         em.persist(florian);
+
+        em.persist(new GoldenBookEntry("John", "C'est trop bien, je peux plus m'en passer"));
+        em.persist(new GoldenBookEntry("Henry", "waaaaaa, j'adore"));
+        em.persist(new GoldenBookEntry("Marc", "Je veux la même chez moi !"));
     }
 }
