@@ -39,7 +39,7 @@ public class GoldenBookEntryDAO {
         return bookEntries;
     }
 
-    public GoldenBookEntry create() {
-        return null;
+    public void create(GoldenBookEntry entry) {
+       em.persist(entry);
     }
 }

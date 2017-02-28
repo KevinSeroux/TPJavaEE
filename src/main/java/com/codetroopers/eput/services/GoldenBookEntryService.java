@@ -22,8 +22,7 @@ public class GoldenBookEntryService {
 
 
     public void insertNewGoldenBookEntry(final GoldenBookEntry entry) {
-
-
+        bookEntryDAO.create(entry);
     }
 
     @Produces
