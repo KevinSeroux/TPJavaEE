@@ -16,11 +16,9 @@
 
 package com.codetroopers.eput.domain.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 /**
  * Created by cgatay on 19/01/16.
@@ -37,6 +35,9 @@ public class User {
     public String email;
     @NotNull
     public String password;
+    //Date of the last connection.
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastConnection;
 
     public User(String name, String email) {
         this.name = name;
