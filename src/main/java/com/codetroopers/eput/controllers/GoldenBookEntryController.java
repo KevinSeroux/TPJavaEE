@@ -27,13 +27,21 @@ public class GoldenBookEntryController {
     private GoldenBookEntry newEntry;
 
     public String insertNewEntry() {
-        if (newEntry.getNote() < 5) {
-            facesContext.addMessage("Invasqdsqdlid credentials", new FacesMessage("Invalid qdsqcredentials !"));
-            return null;
-        } else {
-            //here we persist our new Entry value
+
+        if (newEntry.getNote() == null){
+            //No note is ok.
             goldenBookEntryService.insertNewGoldenBookEntry(newEntry);
             return "entries" + "?faces-redirect=true";
+        } else {
+            if (newEntry.getNote() < 0 || newEntry.getNote() > 10) {
+                //It must be between 0 and 10, so we report the problem.
+                facesContext.addMessage("Invalid credentials", new FacesMessage("Invalid credentials !"));
+                return null;
+            } else {
+                //here we persist our new Entry value
+                goldenBookEntryService.insertNewGoldenBookEntry(newEntry);
+                return "entries" + "?faces-redirect=true";
+            }
         }
     }
 

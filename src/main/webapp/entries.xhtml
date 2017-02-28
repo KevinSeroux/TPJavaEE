@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 template="/WEB-INF/templates/default.xhtml">
 
@@ -7,6 +8,10 @@
         <ui:repeat value="#{loadGoldenBookEntries}" var="entry">
             <div class="well-large">
                 <div class="item">#{entry.content}</div>
+                <div class="item">
+                <h:outputText value="Note: #{entry.note}/10" rendered="#{not empty entry.note}">
+                </h:outputText>
+                </div>
                 <div class="info">On #{entry.createdAt}, by #{entry.author}.</div>
             </div>
         </ui:repeat>
